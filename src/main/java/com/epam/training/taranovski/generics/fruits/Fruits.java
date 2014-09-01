@@ -39,9 +39,9 @@ public class Fruits {
      * @param from
      * @param to
      */
-    private static <T extends Fruit, V extends Fruit> void copyAll(List<T> from, List<V> to) {
+    private static <T extends Fruit> void copyAll(List<T> from, List<? super T> to) {
         for (T item : from) {
-            to.add((V) item);
+            to.add(item);
         }
     }
 
@@ -52,7 +52,7 @@ public class Fruits {
      * @param geraterThan
      * @return
      */
-    public static <T extends Comparable> Collection<T>
+    public static <T extends Fruit & Comparable<T>> Collection<T>
             getItemsGreaterThanSomething(Collection<T> collection, T geraterThan) {
         Collection<T> newCollection = new LinkedList<>();
         for (T collectionItem : collection) {
